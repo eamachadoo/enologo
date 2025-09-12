@@ -1,0 +1,43 @@
+{
+  // Flutter and Dart settings
+  "dart.flutterSdkPath": null,
+  "dart.analysisServerFolding": true,
+  "dart.previewFlutterUiGuides": true,
+  "dart.previewFlutterUiGuidesCustomTracking": true,
+  "dart.closingLabels": true,
+  "dart.showTodos": true,
+  
+  // Code formatting
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  
+  // File associations
+  "files.associations": {
+    "*.dart": "dart"
+  },
+  
+  // Search and file explorer
+  "search.exclude": {
+    "**/build": true,
+    "**/.dart_tool": true,
+    "**/.pub": true
+  },
+  "files.exclude": {
+    "**/.dart_tool": true,
+    "**/.pub": true
+  },
+  
+  // Flutter specific
+  "flutter.autoImportConfig": true,
+  "flutter.newProjectPath": "/Users/eamachado",
+  
+  // Git
+  "git.ignoreLimitWarning": true,
+  
+  // Terminal
+  "terminal.integrated.defaultProfile.osx": "zsh"
+}
