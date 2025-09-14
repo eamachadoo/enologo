@@ -5,6 +5,7 @@ A Flutter mobile application for managing wine collections across multiple stora
 ## Features
 
 ### MVP (Core Features)
+
 - User authentication with Firebase Auth
 - Multiple warehouse management
 - Manual wine entry and inventory tracking
@@ -12,6 +13,7 @@ A Flutter mobile application for managing wine collections across multiple stora
 - Simple consumption tracking
 
 ### Enhanced Features (Post-MVP)
+
 - Camera-based wine entry with ML Kit text recognition
 - Advanced search and filtering by multiple criteria
 - Real-time low stock alerts and notifications

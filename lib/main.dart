@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'screens/auth_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,15 +43,42 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Welcome to Wine Collection Manager',
-              style: TextStyle(fontSize: 20),
+          children: <Widget>[
+            const Icon(
+              Icons.wine_bar,
+              size: 80,
+              color: Colors.deepPurple,
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
+              'Welcome to Wine Collection Manager',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 10),
+            const Text(
               'Your personal wine inventory awaits!',
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: 16, color: Colors.grey),
+            ),
+            const SizedBox(height: 40),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AuthScreen()),
+                );
+              },
+              child: const Text('Get Started'),
+            ),
+            const SizedBox(height: 16),
+            OutlinedButton(
+              onPressed: () {
+                // TODO: Navigate to wine collection
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Wine collection coming soon!')),
+                );
+              },
+              child: const Text('Browse Collection'),
             ),
           ],
         ),
