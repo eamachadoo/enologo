@@ -22,6 +22,11 @@ class UserPreferences {
   bool enablePushNotifications;    // Global notification setting
   bool enableCameraAutoFocus;      // Camera behavior setting
   TemperatureUnit temperatureUnit; // Celsius/Fahrenheit for storage info
+  bool enableAgingAlerts;          // Wine aging notifications
+  bool enableLowStockAlerts;       // Low stock notifications
+  bool enableFavoriteReminders;    // Favorite wine revisit reminders
+  int favoriteReminderDays;        // Days before suggesting favorite wines (default: 90)
+  int alertCooldownDays;           // Days between similar alerts (default: 30)
 }
 ```
 
@@ -81,6 +86,14 @@ class Wine {
   DateTime createdAt;      // Entry creation timestamp
   DateTime updatedAt;      // Last modification timestamp
   WineMetadata metadata;   // Additional optional fields
+  
+  // Notification-related fields
+  int? preferredConsumptionAgeYears; // User-defined aging preference (e.g., 5 years)
+  DateTime? nextAlertDate; // Calculated date for aging alert
+  DateTime? lastAlertSent; // Timestamp of last notification sent
+  bool isFavorite;         // User-marked favorite wine
+  DateTime? lastConsumedDate; // Last consumption date (for favorite reminders)
+  DateTime? lastFavoriteReminderSent; // Last favorite wine reminder sent
 }
 
 enum WineType {
@@ -106,6 +119,9 @@ class WineMetadata {
 - Notes max 1000 characters
 - Rating must be between 1.0 and 5.0
 - Max 10 images per wine
+- Preferred consumption age must be between 1 and 50 years
+- Next alert date automatically calculated when aging preference is set
+- Last consumed date cannot be in the future
 
 **Relationships**:
 - One User has many Wines (1:N)
@@ -129,6 +145,8 @@ class ConsumptionEvent {
   double? rating;          // Rating for this specific consumption
   String? location;        // Where consumed
   DateTime createdAt;      // Record creation timestamp
+  
+  // Auto-update wine's lastConsumedDate when event is created
 }
 ```
 
@@ -146,7 +164,7 @@ class ConsumptionEvent {
 - One Wine has many Consumption Events (1:N)
 
 ### Alert
-**Purpose**: System-generated notifications for low stock warnings
+**Purpose**: System-generated notifications for wine-related events and reminders
 **Storage**: Firestore collection `alerts`
 
 ```dart
@@ -162,12 +180,14 @@ class Alert {
   DateTime triggeredAt;    // When alert was created
   DateTime? readAt;        // When user acknowledged alert
   DateTime? expiresAt;     // Optional expiration time
+  Map<String, dynamic>? metadata; // Additional alert-specific data
 }
 
 enum AlertType {
   lowStock,        // Quantity below threshold
   zeroStock,       // Completely out of wine
-  oldWine,         // Wine aging beyond optimal period
+  agingReady,      // Wine reached preferred consumption age
+  favoriteReminder, // Favorite wine not consumed recently
   priceAlert       // Future: price tracking alerts
 }
 ```

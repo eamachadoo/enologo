@@ -54,6 +54,13 @@ void main() {
       'createdAt': '2024-01-15T10:30:00.000Z',
       'updatedAt': '2024-01-15T10:30:00.000Z',
       'metadata': validWineMetadata,
+      // Notification-related fields
+      'preferredConsumptionAgeYears': 5,
+      'nextAlertDate': '2020-01-01T00:00:00.000Z', // 2015 + 5 years = 2020
+      'lastAlertSent': '2024-01-01T10:00:00.000Z',
+      'isFavorite': true,
+      'lastConsumedDate': '2023-12-25T19:30:00.000Z',
+      'lastFavoriteReminderSent': '2024-01-10T09:00:00.000Z',
     };
 
     final minimalWineData = {
@@ -66,6 +73,13 @@ void main() {
       'createdAt': '2024-01-15T10:30:00.000Z',
       'updatedAt': '2024-01-15T10:30:00.000Z',
       'metadata': <String, dynamic>{},
+      // Notification fields with defaults
+      'preferredConsumptionAgeYears': null,
+      'nextAlertDate': null,
+      'lastAlertSent': null,
+      'isFavorite': false,
+      'lastConsumedDate': null,
+      'lastFavoriteReminderSent': null,
     };
 
     group('WineType Enum Tests', () {
@@ -368,6 +382,150 @@ void main() {
       });
     });
 
+    group('Wine Notification Fields Tests', () {
+      
+      test('should create wine with notification preferences', () {
+        // Test wine with aging notification preferences
+        
+        // final wine = Wine(
+        //   id: 'wine_notify',
+        //   userId: 'user_notify',
+        //   warehouseId: 'warehouse_notify',
+        //   name: 'Bordeaux 2010',
+        //   year: 2010,
+        //   quantity: 3,
+        //   imageUrls: [],
+        //   createdAt: DateTime.now(),
+        //   updatedAt: DateTime.now(),
+        //   metadata: WineMetadata(),
+        //   preferredConsumptionAgeYears: 8,
+        //   nextAlertDate: DateTime.parse('2018-01-01T00:00:00.000Z'), // 2010 + 8
+        //   isFavorite: true,
+        // );
+
+        // expect(wine.preferredConsumptionAgeYears, equals(8));
+        // expect(wine.nextAlertDate?.year, equals(2018));
+        // expect(wine.isFavorite, isTrue);
+        // expect(wine.lastAlertSent, isNull);
+        // expect(wine.lastConsumedDate, isNull);
+        // expect(wine.lastFavoriteReminderSent, isNull);
+        
+        expect(true, isFalse, reason: 'Wine notification fields not yet implemented');
+      });
+
+      test('should handle favorite wine properties', () {
+        // Test favorite wine functionality
+        
+        // final wine = Wine(
+        //   id: 'wine_favorite',
+        //   userId: 'user_fav',
+        //   warehouseId: 'warehouse_fav',
+        //   name: 'Dom Pérignon 2008',
+        //   year: 2008,
+        //   quantity: 2,
+        //   imageUrls: [],
+        //   createdAt: DateTime.now(),
+        //   updatedAt: DateTime.now(),
+        //   metadata: WineMetadata(),
+        //   isFavorite: true,
+        //   lastConsumedDate: DateTime.parse('2023-12-31T20:00:00.000Z'),
+        //   lastFavoriteReminderSent: DateTime.parse('2024-01-15T10:00:00.000Z'),
+        // );
+
+        // expect(wine.isFavorite, isTrue);
+        // expect(wine.lastConsumedDate, isNotNull);
+        // expect(wine.lastFavoriteReminderSent, isNotNull);
+        
+        expect(true, isFalse, reason: 'Wine favorite properties not yet implemented');
+      });
+
+      test('should calculate next alert date from vintage and preference', () {
+        // Test automatic next alert date calculation
+        
+        // final wine = Wine(
+        //   id: 'wine_alert_calc',
+        //   userId: 'user_calc',
+        //   warehouseId: 'warehouse_calc',
+        //   name: 'Cabernet 2015',
+        //   year: 2015,
+        //   quantity: 5,
+        //   imageUrls: [],
+        //   createdAt: DateTime.now(),
+        //   updatedAt: DateTime.now(),
+        //   metadata: WineMetadata(),
+        //   preferredConsumptionAgeYears: 7,
+        // );
+
+        // // Should calculate next alert for 2015 + 7 = 2022
+        // final expectedAlertYear = 2022;
+        // expect(wine.getCalculatedAlertYear(), equals(expectedAlertYear));
+        
+        expect(true, isFalse, reason: 'Wine alert date calculation not yet implemented');
+      });
+
+      test('should validate preferred consumption age range', () {
+        // Test aging preference validation (1-50 years)
+        
+        // expect(
+        //   () => Wine(
+        //     id: 'test_id',
+        //     userId: 'test_user',
+        //     warehouseId: 'test_warehouse',
+        //     name: 'Test Wine',
+        //     quantity: 1,
+        //     imageUrls: [],
+        //     createdAt: DateTime.now(),
+        //     updatedAt: DateTime.now(),
+        //     metadata: WineMetadata(),
+        //     preferredConsumptionAgeYears: 0, // Invalid: too low
+        //   ),
+        //   throwsA(isA<ArgumentError>()),
+        // );
+
+        // expect(
+        //   () => Wine(
+        //     id: 'test_id2',
+        //     userId: 'test_user',
+        //     warehouseId: 'test_warehouse',
+        //     name: 'Test Wine 2',
+        //     quantity: 1,
+        //     imageUrls: [],
+        //     createdAt: DateTime.now(),
+        //     updatedAt: DateTime.now(),
+        //     metadata: WineMetadata(),
+        //     preferredConsumptionAgeYears: 51, // Invalid: too high
+        //   ),
+        //   throwsA(isA<ArgumentError>()),
+        // );
+        
+        expect(true, isFalse, reason: 'Wine aging preference validation not yet implemented');
+      });
+
+      test('should validate future dates for consumption tracking', () {
+        // Test that consumption dates cannot be in future
+        
+        // final futureDate = DateTime.now().add(Duration(days: 1));
+        
+        // expect(
+        //   () => Wine(
+        //     id: 'test_id',
+        //     userId: 'test_user',
+        //     warehouseId: 'test_warehouse',
+        //     name: 'Test Wine',
+        //     quantity: 1,
+        //     imageUrls: [],
+        //     createdAt: DateTime.now(),
+        //     updatedAt: DateTime.now(),
+        //     metadata: WineMetadata(),
+        //     lastConsumedDate: futureDate, // Invalid: future date
+        //   ),
+        //   throwsA(isA<ArgumentError>()),
+        // );
+        
+        expect(true, isFalse, reason: 'Wine consumption date validation not yet implemented');
+      });
+    });
+
     group('Wine Validation Tests', () {
       
       test('should reject empty wine name', () {
@@ -599,7 +757,7 @@ void main() {
     group('Wine JSON Serialization Tests', () {
       
       test('should serialize complete wine to JSON', () {
-        // Test JSON serialization with all properties
+        // Test JSON serialization with all properties including notifications
         
         // final wine = Wine(
         //   id: 'wine_123',
@@ -628,10 +786,20 @@ void main() {
         //     purchaseDate: DateTime.parse('2024-01-10T00:00:00.000Z'),
         //     storageNotes: 'Store at 55°F, on side',
         //   ),
+        //   // Notification fields
+        //   preferredConsumptionAgeYears: 5,
+        //   nextAlertDate: DateTime.parse('2020-01-01T00:00:00.000Z'),
+        //   lastAlertSent: DateTime.parse('2024-01-01T10:00:00.000Z'),
+        //   isFavorite: true,
+        //   lastConsumedDate: DateTime.parse('2023-12-25T19:30:00.000Z'),
+        //   lastFavoriteReminderSent: DateTime.parse('2024-01-10T09:00:00.000Z'),
         // );
 
         // final json = wine.toJson();
         // expect(json, equals(validWineData));
+        // expect(json['preferredConsumptionAgeYears'], equals(5));
+        // expect(json['isFavorite'], isTrue);
+        // expect(json['nextAlertDate'], equals('2020-01-01T00:00:00.000Z'));
         
         expect(true, isFalse, reason: 'Wine toJson not yet implemented');
       });
@@ -728,6 +896,82 @@ void main() {
         // expect(deserializedWine.type, equals(WineType.sparkling));
         
         expect(true, isFalse, reason: 'Wine type enum serialization not yet implemented');
+      });
+
+      test('should serialize notification fields to JSON correctly', () {
+        // Test notification field serialization/deserialization
+        
+        // final wineWithNotifications = Wine(
+        //   id: 'wine_notify_json',
+        //   userId: 'user_notify',
+        //   warehouseId: 'warehouse_notify',
+        //   name: 'Notification Test Wine',
+        //   year: 2018,
+        //   quantity: 4,
+        //   imageUrls: [],
+        //   createdAt: DateTime.now(),
+        //   updatedAt: DateTime.now(),
+        //   metadata: WineMetadata(),
+        //   preferredConsumptionAgeYears: 6,
+        //   nextAlertDate: DateTime.parse('2024-01-01T00:00:00.000Z'),
+        //   lastAlertSent: DateTime.parse('2024-01-15T12:00:00.000Z'),
+        //   isFavorite: true,
+        //   lastConsumedDate: DateTime.parse('2023-11-20T18:00:00.000Z'),
+        //   lastFavoriteReminderSent: DateTime.parse('2024-01-10T10:00:00.000Z'),
+        // );
+
+        // final json = wineWithNotifications.toJson();
+        // expect(json['preferredConsumptionAgeYears'], equals(6));
+        // expect(json['nextAlertDate'], equals('2024-01-01T00:00:00.000Z'));
+        // expect(json['lastAlertSent'], equals('2024-01-15T12:00:00.000Z'));
+        // expect(json['isFavorite'], isTrue);
+        // expect(json['lastConsumedDate'], equals('2023-11-20T18:00:00.000Z'));
+        // expect(json['lastFavoriteReminderSent'], equals('2024-01-10T10:00:00.000Z'));
+
+        // final deserializedWine = Wine.fromJson(json);
+        // expect(deserializedWine.preferredConsumptionAgeYears, equals(6));
+        // expect(deserializedWine.isFavorite, isTrue);
+        // expect(deserializedWine.nextAlertDate?.toIso8601String(), contains('2024-01-01'));
+        
+        expect(true, isFalse, reason: 'Wine notification field serialization not yet implemented');
+      });
+
+      test('should handle null notification fields in JSON', () {
+        // Test that null notification fields are handled properly
+        
+        // final minimalWineWithNulls = Wine(
+        //   id: 'wine_null_notify',
+        //   userId: 'user_null',
+        //   warehouseId: 'warehouse_null',
+        //   name: 'Null Notification Test',
+        //   quantity: 1,
+        //   imageUrls: [],
+        //   createdAt: DateTime.now(),
+        //   updatedAt: DateTime.now(),
+        //   metadata: WineMetadata(),
+        //   // All notification fields as null/default
+        //   preferredConsumptionAgeYears: null,
+        //   nextAlertDate: null,
+        //   lastAlertSent: null,
+        //   isFavorite: false,
+        //   lastConsumedDate: null,
+        //   lastFavoriteReminderSent: null,
+        // );
+
+        // final json = minimalWineWithNulls.toJson();
+        // expect(json['preferredConsumptionAgeYears'], isNull);
+        // expect(json['nextAlertDate'], isNull);
+        // expect(json['lastAlertSent'], isNull);
+        // expect(json['isFavorite'], isFalse);
+        // expect(json['lastConsumedDate'], isNull);
+        // expect(json['lastFavoriteReminderSent'], isNull);
+
+        // final deserializedWine = Wine.fromJson(json);
+        // expect(deserializedWine.preferredConsumptionAgeYears, isNull);
+        // expect(deserializedWine.isFavorite, isFalse);
+        // expect(deserializedWine.lastConsumedDate, isNull);
+        
+        expect(true, isFalse, reason: 'Wine null notification field handling not yet implemented');
       });
 
       test('should maintain JSON serialization roundtrip consistency', () {

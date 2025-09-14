@@ -119,11 +119,12 @@ Implement Warehouse model with validation and JSON serialization
 **Files**: `lib/models/warehouse.dart`
 **Dependencies**: T007 (tests must be failing)
 
-### T016 - [P] Wine Model Implementation (Local JSON)
+### T016 - [P] Wine Model Implementation (Local JSON + Notifications)
 
-Implement Wine, WineMetadata, and related models with JSON serialization
+Implement Wine, WineMetadata, and related models with JSON serialization and notification fields
 **Files**: `lib/models/wine.dart`, `lib/models/wine_metadata.dart`, `lib/models/wine_type.dart`
 **Dependencies**: T008 (tests must be failing)
+**Note**: Includes notification fields (preferredConsumptionAgeYears, isFavorite, lastConsumedDate, etc.)
 
 ### T017 - Authentication Service Implementation (Local)
 
@@ -137,11 +138,12 @@ Implement SharedPreferences/JSON-based Warehouse CRUD operations
 **Files**: `lib/services/warehouse_service.dart`
 **Dependencies**: T009 (tests must be failing), T015
 
-### T019 - Wine Service Implementation (Local Storage)
+### T019 - Wine Service Implementation (Local Storage + Notifications)
 
-Implement SharedPreferences/JSON-based Wine CRUD operations
-**Files**: `lib/services/wine_service.dart`
+Implement SharedPreferences/JSON-based Wine CRUD operations with notification management
+**Files**: `lib/services/wine_service.dart`, `lib/services/notification_service.dart`
 **Dependencies**: T010 (tests must be failing), T016
+**Note**: Includes aging preferences, favorite management, and local notification triggers
 
 ### T020 - [P] Authentication Screens
 
@@ -167,11 +169,26 @@ Implement manual wine entry form (no camera for MVP)
 **Files**: `lib/screens/wine/wine_form_screen.dart`
 **Dependencies**: T019, T013 (tests must be failing)
 
-### T024 - Basic Consumption Tracking
+### T024 - Basic Consumption Tracking + Notification Updates
 
-Implement simple wine consumption recording
+Implement simple wine consumption recording with automatic notification field updates
 **Files**: `lib/screens/wine/consumption_screen.dart`, `lib/models/consumption_event.dart`
 **Dependencies**: T019
+**Note**: Automatically updates lastConsumedDate for notification system
+
+### T024.1 - [NEW] Local Notification Service Implementation
+
+Implement local notification service for wine aging and low stock alerts
+**Files**: `lib/services/local_notification_service.dart`, `lib/utils/notification_scheduler.dart`
+**Dependencies**: T019
+**Note**: Local-only notifications for MVP, cloud functions deferred to Phase 2
+
+### T024.2 - [NEW] Wine Notification Management UI
+
+Implement UI for setting wine aging preferences and favorite status
+**Files**: `lib/screens/wine/wine_notification_settings.dart`, `lib/widgets/aging_preference_widget.dart`
+**Dependencies**: T019, T024.1
+**Note**: Allows users to set preferred consumption age and toggle favorites
 
 ## Phase 3.4: MVP Integration & Navigation
 

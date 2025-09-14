@@ -29,17 +29,23 @@
 - Phase 3-4: Implementation execution (manual or via tools)
 
 ## Summary
-Cross-platform mobile application for wine collection management with photo-based label detection, multi-warehouse inventory tracking, consumption logging, and smart alerts. Primary requirement: Enable wine enthusiasts to manage their personal wine collections across multiple storage locations with automatic wine entry via camera OCR and real-time inventory monitoring. Technical approach: Flutter for cross-platform mobile development with Firebase backend for authentication, Cloud Firestore for data storage, Firebase Storage for images, and Google ML Kit for on-device text recognition.
+Cross-platform mobile application for wine collection management with photo-based label detection, multi-warehouse inventory tracking, consumption logging, smart notifications, and intelligent wine aging alerts. Primary requirement: Enable wine enthusiasts to manage their personal wine collections across multiple storage locations with automatic wine entry via camera OCR, real-time inventory monitoring, and personalized wine consumption reminders. Technical approach: Flutter for cross-platform mobile development with Firebase backend for authentication, Cloud Firestore for data storage, Firebase Storage for images, Google ML Kit for on-device text recognition, and Firebase Cloud Functions for intelligent notification triggers.
+
+**Key Features Enhanced**:
+- **Wine Aging Alerts**: Notify users when wines reach preferred consumption age
+- **Low Stock Notifications**: Alert when wine quantities drop below thresholds
+- **Favorite Wine Reminders**: Suggest revisiting favorite wines not consumed recently
+- **Smart Notification Logic**: Anti-spam mechanisms and user preference respect
 
 ## Technical Context
 **Language/Version**: Dart with Flutter 3.24+ 
-**Primary Dependencies**: Flutter SDK, Firebase SDK (auth, firestore, storage, functions), Google ML Kit for text recognition, camera plugin
-**Storage**: Firebase Cloud Firestore (NoSQL) for structured data, Firebase Cloud Storage for wine bottle/label images
+**Primary Dependencies**: Flutter SDK, Firebase SDK (auth, firestore, storage, functions, messaging), Google ML Kit for text recognition, camera plugin, local notification plugin
+**Storage**: Firebase Cloud Firestore (NoSQL) for structured data, Firebase Cloud Storage for wine bottle/label images, SharedPreferences for local notification settings
 **Testing**: Flutter test framework, widget tests, integration tests
 **Target Platform**: iOS 15+ and Android 8+ (API level 26+)
 **Project Type**: mobile - determines source structure as mobile + API
 **Performance Goals**: <2s app startup, <500ms image processing, 60fps UI, offline-capable for viewing stored data
-**Constraints**: On-device ML processing for privacy, real-time push notifications, secure user authentication
+**Constraints**: On-device ML processing for privacy, real-time push notifications with intelligent scheduling, secure user authentication, anti-spam notification mechanisms
 **Scale/Scope**: 10k+ users, 100k+ wine entries per user, 5-10 main screens, cloud-based serverless architecture
 
 ## Constitution Check

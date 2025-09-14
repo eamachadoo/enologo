@@ -87,6 +87,27 @@
 - Auth0: Additional cost, integration complexity
 - AWS Cognito: Setup complexity, learning curve
 
+### Notification System Architecture
+**Decision**: Firebase Cloud Functions + Push Notifications with Smart Alert Logic  
+**Rationale**:
+- Scheduled Cloud Functions (daily cron jobs) for automated wine aging and low stock checks
+- Firebase Cloud Messaging for cross-platform push notifications
+- On-write triggers for immediate stock change alerts
+- User preference-based aging notifications (preferred consumption age)
+- Favorite wine revisit reminders with configurable thresholds
+- Anti-spam mechanisms with timestamp tracking
+
+**Key Features**:
+1. **Aging Alerts**: Notify when wines reach preferred consumption age (user-defined years)
+2. **Low Stock Alerts**: Notify when wine quantity drops below threshold
+3. **Favorite Wine Reminders**: Suggest revisiting favorite wines not consumed recently
+4. **Smart Scheduling**: Daily cron jobs with anti-spam protection
+
+**Alternatives considered**:
+- Local-only notifications: No cross-device sync, limited scheduling
+- Third-party services (OneSignal): Additional complexity, vendor dependency
+- Real-time listeners: Higher cost, unnecessary for time-based alerts
+
 ## Performance Optimizations
 
 ### Image Handling
