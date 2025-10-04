@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import '../../lib/models/warehouse.dart';
 
 /// Unit tests for Warehouse model
 /// 
@@ -45,124 +46,102 @@ void main() {
     group('Constructor and Property Tests', () {
       
       test('should create warehouse with all properties', () {
-        // This test will pass once Warehouse model is implemented
-        // For now, it represents the expected behavior
-        
-        // final warehouse = Warehouse(
-        //   id: 'warehouse_123',
-        //   userId: 'user_456', 
-        //   name: 'Main Cellar',
-        //   description: 'Primary wine storage in basement',
-        //   location: '123 Wine Street, Napa Valley, CA',
-        //   latitude: 38.2975,
-        //   longitude: -122.4094,
-        //   wineCount: 42,
-        //   createdAt: DateTime.parse('2024-01-15T10:30:00.000Z'),
-        //   updatedAt: DateTime.parse('2024-01-15T10:30:00.000Z'),
-        // );
+        final warehouse = Warehouse(
+          id: 'warehouse_123',
+          userId: 'user_456', 
+          name: 'Main Cellar',
+          description: 'Primary wine storage in basement',
+          location: '123 Wine Street, Napa Valley, CA',
+          latitude: 38.2975,
+          longitude: -122.4094,
+          wineCount: 42,
+          createdAt: DateTime.parse('2024-01-15T10:30:00.000Z'),
+          updatedAt: DateTime.parse('2024-01-15T10:30:00.000Z'),
+        );
 
-        // expect(warehouse.id, equals('warehouse_123'));
-        // expect(warehouse.userId, equals('user_456'));
-        // expect(warehouse.name, equals('Main Cellar'));
-        // expect(warehouse.description, equals('Primary wine storage in basement'));
-        // expect(warehouse.location, equals('123 Wine Street, Napa Valley, CA'));
-        // expect(warehouse.latitude, equals(38.2975));
-        // expect(warehouse.longitude, equals(-122.4094));
-        // expect(warehouse.wineCount, equals(42));
-        // expect(warehouse.createdAt, equals(DateTime.parse('2024-01-15T10:30:00.000Z')));
-        // expect(warehouse.updatedAt, equals(DateTime.parse('2024-01-15T10:30:00.000Z')));
-        
-        // Placeholder assertion until implementation
-        expect(true, isFalse, reason: 'Warehouse model not yet implemented');
+        expect(warehouse.id, equals('warehouse_123'));
+        expect(warehouse.userId, equals('user_456'));
+        expect(warehouse.name, equals('Main Cellar'));
+        expect(warehouse.description, equals('Primary wine storage in basement'));
+        expect(warehouse.location, equals('123 Wine Street, Napa Valley, CA'));
+        expect(warehouse.latitude, equals(38.2975));
+        expect(warehouse.longitude, equals(-122.4094));
+        expect(warehouse.wineCount, equals(42));
+        expect(warehouse.createdAt, equals(DateTime.parse('2024-01-15T10:30:00.000Z')));
+        expect(warehouse.updatedAt, equals(DateTime.parse('2024-01-15T10:30:00.000Z')));
       });
 
       test('should create warehouse with minimal required properties', () {
-        // This test will pass once Warehouse model is implemented
-        
-        // final warehouse = Warehouse(
-        //   id: 'warehouse_minimal',
-        //   userId: 'user_789',
-        //   name: 'Wine Room',
-        //   wineCount: 0,
-        //   createdAt: DateTime.parse('2024-01-15T10:30:00.000Z'),
-        //   updatedAt: DateTime.parse('2024-01-15T10:30:00.000Z'),
-        // );
+        final warehouse = Warehouse(
+          id: 'warehouse_minimal',
+          userId: 'user_789',
+          name: 'Wine Room',
+          wineCount: 0,
+          createdAt: DateTime.parse('2024-01-15T10:30:00.000Z'),
+          updatedAt: DateTime.parse('2024-01-15T10:30:00.000Z'),
+        );
 
-        // expect(warehouse.id, equals('warehouse_minimal'));
-        // expect(warehouse.userId, equals('user_789'));
-        // expect(warehouse.name, equals('Wine Room'));
-        // expect(warehouse.description, isNull);
-        // expect(warehouse.location, isNull);
-        // expect(warehouse.latitude, isNull);
-        // expect(warehouse.longitude, isNull);
-        // expect(warehouse.wineCount, equals(0));
-        
-        // Placeholder assertion until implementation
-        expect(true, isFalse, reason: 'Warehouse model not yet implemented');
+        expect(warehouse.id, equals('warehouse_minimal'));
+        expect(warehouse.userId, equals('user_789'));
+        expect(warehouse.name, equals('Wine Room'));
+        expect(warehouse.description, isNull);
+        expect(warehouse.location, isNull);
+        expect(warehouse.latitude, isNull);
+        expect(warehouse.longitude, isNull);
+        expect(warehouse.wineCount, equals(0));
       });
 
       test('should handle optional properties as null', () {
-        // Test that optional properties can be null without issues
-        
-        // final warehouse = Warehouse(
-        //   id: 'warehouse_null_test',
-        //   userId: 'user_null',
-        //   name: 'Test Warehouse',
-        //   description: null,
-        //   location: null,
-        //   latitude: null,
-        //   longitude: null,
-        //   wineCount: 5,
-        //   createdAt: DateTime.now(),
-        //   updatedAt: DateTime.now(),
-        // );
+        final warehouse = Warehouse(
+          id: 'warehouse_null_test',
+          userId: 'user_null',
+          name: 'Test Warehouse',
+          description: null,
+          location: null,
+          latitude: null,
+          longitude: null,
+          wineCount: 5,
+          createdAt: DateTime.now(),
+          updatedAt: DateTime.now(),
+        );
 
-        // expect(warehouse.description, isNull);
-        // expect(warehouse.location, isNull);
-        // expect(warehouse.latitude, isNull);
-        // expect(warehouse.longitude, isNull);
-        
-        expect(true, isFalse, reason: 'Warehouse model not yet implemented');
+        expect(warehouse.description, isNull);
+        expect(warehouse.location, isNull);
+        expect(warehouse.latitude, isNull);
+        expect(warehouse.longitude, isNull);
       });
     });
 
     group('Validation Tests', () {
       
       test('should reject empty warehouse name', () {
-        // Test name validation: required, 1-100 characters
-        
-        // expect(
-        //   () => Warehouse(
-        //     id: 'test_id',
-        //     userId: 'test_user',
-        //     name: '',
-        //     wineCount: 0,
-        //     createdAt: DateTime.now(),
-        //     updatedAt: DateTime.now(),
-        //   ),
-        //   throwsA(isA<ArgumentError>()),
-        // );
-        
-        expect(true, isFalse, reason: 'Warehouse model validation not yet implemented');
+        expect(
+          () => Warehouse(
+            id: 'test_id',
+            userId: 'test_user',
+            name: '',
+            wineCount: 0,
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+          ),
+          throwsA(isA<ArgumentError>()),
+        );
       });
 
       test('should reject warehouse name longer than 100 characters', () {
-        // Test name length limit
         final longName = 'A' * 101;
         
-        // expect(
-        //   () => Warehouse(
-        //     id: 'test_id',
-        //     userId: 'test_user',
-        //     name: longName,
-        //     wineCount: 0,
-        //     createdAt: DateTime.now(),
-        //     updatedAt: DateTime.now(),
-        //   ),
-        //   throwsA(isA<ArgumentError>()),
-        // );
-        
-        expect(true, isFalse, reason: 'Warehouse model validation not yet implemented');
+        expect(
+          () => Warehouse(
+            id: 'test_id',
+            userId: 'test_user',
+            name: longName,
+            wineCount: 0,
+            createdAt: DateTime.now(),
+            updatedAt: DateTime.now(),
+          ),
+          throwsA(isA<ArgumentError>()),
+        );
       });
 
       test('should reject description longer than 500 characters', () {
